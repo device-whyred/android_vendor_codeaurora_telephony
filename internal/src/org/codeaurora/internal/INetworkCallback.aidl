@@ -36,7 +36,6 @@ import org.codeaurora.internal.Status;
 import org.codeaurora.internal.Token;
 import org.codeaurora.internal.BearerAllocationStatus;
 import org.codeaurora.internal.UpperLayerIndInfo;
-import org.codeaurora.internal.NrConfig;
 import org.codeaurora.internal.NrConfigType;
 import org.codeaurora.internal.NrIconType;
 
@@ -72,7 +71,6 @@ interface INetworkCallback {
 
     /**
     * @deprecated
-    * use onNrConfigStatus instead to get current nr config.
     */
     void on5gConfigInfo(int slotId, in Token token, in Status status,
             in NrConfigType nrConfigType);
@@ -96,21 +94,4 @@ interface INetworkCallback {
     * @param - enableStatus true if endce is enabled otherwise false
     */
     void onEndcStatus(int slotId, in Token token, in Status status, boolean enableStatus);
-
-    /**
-    * Response to setNrConfig
-    * @param - slotId
-    * @param - token is the same token which is recived in setNrConfig
-    * @param - status SUCCESS/FAILURE based on the modem Result code
-    */
-    void onSetNrConfig(int slotId, in Token token, in Status status);
-
-    /**
-    * Response to queryNrConfig
-    * @param - slotId
-    * @param - token is the same token which is recived in queryNrConfig
-    * @param - status SUCCESS/FAILURE based on the modem Result code
-    * @param - nrConfig: NSA + SA/NSA/SA
-    */
-    void onNrConfigStatus(int slotId, in Token token, in Status status, in NrConfig nrConfig);
 }
